@@ -1,20 +1,22 @@
 package decorator;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
-public class DecoratorTest extends TestCase {
+public class DecoratorTest {
     @Test
-    public void test(){
-        System.out.println("Test decorator:");
-        VisitPackage visitPackage=new Ticket(200.0,"Enter the paradise and have fun");
-        visitPackage=new BaseDecorator(visitPackage);
-        visitPackage=new RollerCoasterDecorator(visitPackage);
-        visitPackage=new BumperCarDecorator(visitPackage);
-        visitPackage=new IceSculptureExhibitionDecorator(visitPackage);
-        System.out.println("Visit Package price:"+visitPackage.getPrice());
-        System.out.println("Visit Package content:"+visitPackage.getContent());
+    public void testDecorator() {
+        VisitPackage visitPackage = new Ticket();
 
+        VisitPackage baseDecorator = new BaseDecorator(visitPackage);
+        System.out.println("BaseDecorator: " + baseDecorator.getPrice() + baseDecorator.getContent());
+
+        VisitPackage bumperCarDecorator = new BumperCarDecorator(baseDecorator);
+        System.out.println("BumperCarDecorator: " + bumperCarDecorator.getPrice() + bumperCarDecorator.getContent());
+
+        VisitPackage iceSculptureExhibitionDecorator = new IceSculptureExhibitionDecorator(bumperCarDecorator);
+        System.out.println("IceSculptureExhibitionDecorator: " + iceSculptureExhibitionDecorator.getPrice() + iceSculptureExhibitionDecorator.getContent());
+
+        VisitPackage rollerCoasterDecorator = new RollerCoasterDecorator(iceSculptureExhibitionDecorator);
+        System.out.println("RollerCoasterDecorator: " + rollerCoasterDecorator.getPrice() + rollerCoasterDecorator.getContent());
     }
-
 }

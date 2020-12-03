@@ -3,12 +3,17 @@ package dataaccessobject;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-public class DataAccessObjectTest extends TestCase {
+public class DataAccessObjectTest {
     @Test
-    public void test(){
+    public void testDataAccessObject(){
         CustomerDao customerDao = new CustomerDaoImpl();
-        Customer customer = new Customer(1853401, "Weiqi", "Li");
-        customerDao.updateCustomer(customer);
+        Customer customer1 = new Customer(1752459, "z", "z");
+        Customer customer2 = new Customer(1752985, "xd", "l");
+
+        customerDao.updateCustomer(customer1);
+        customerDao.getCustomer();
+
+        customerDao.updateCustomer(customer2);
         customerDao.getCustomer();
     }
 }
