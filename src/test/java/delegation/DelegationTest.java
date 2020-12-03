@@ -1,16 +1,14 @@
 package delegation;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
-public class DelegationTest extends TestCase {
+public class DelegationTest {
+
     @Test
-    public void test(){
-        System.out.println();
-        System.out.println("Testing Delegation\n");
+    public void testDelegation() {
         TicketOffice ticketOffice = new TicketOffice();
-        ticketOffice.getYear("00001","00001","adult");
-        ticketOffice.getYear("00002","00002","child");
-        ticketOffice.getYear("00003","00003","baby");
+
+        ticketOffice.getYear("1","1","child");
+        ticketOffice.getYear("2","2","adult");
     }
 }
