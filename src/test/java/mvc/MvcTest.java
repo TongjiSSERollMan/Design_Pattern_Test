@@ -6,17 +6,17 @@ import org.junit.Test;
 public class MvcTest extends TestCase {
     @Test
     public void test(){
-        UserReview model = retrieveReviewFromDatabase();
-        UserReviewView view = new UserReviewView();
-        UserReviewController controller = new UserReviewController(model, view);
-        controller.updateView();
-        controller.setUserId("0B1A4");
-        controller.setStars(2);
-        controller.setReview("Terrible!");
-        controller.updateView();
+        UserReview test_model = getReview();
+        UserReviewView test_view = new UserReviewView();
+        UserReviewController test_controller = new UserReviewController(test_model, test_view);
+        test_controller.updateView();
+        test_controller.setUserId("ABC123");
+        test_controller.setStars(3);
+        test_controller.setReview("Nice!");
+        test_controller.updateView();
     }
 
-    private static UserReview retrieveReviewFromDatabase(){
-        return new UserReview("0E1B2", "Pretty good job so far.", 5);
+    private static UserReview getReview(){
+        return new UserReview("DEF456", "Terrible!", 1);
     }
 }

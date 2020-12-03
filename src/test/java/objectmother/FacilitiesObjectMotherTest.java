@@ -12,32 +12,10 @@ public class FacilitiesObjectMotherTest extends TestCase {
         FacilitiesObjectMother facilitiesObjectMother = new FacilitiesObjectMother();
         TraditionalFacilities bicycleCenter = facilitiesObjectMother.createUndamagedTraditionalFacilities();
         TraditionalFacilities toilet = facilitiesObjectMother.createDamagedTraditionalFacilities();
-        ElectronicFacilities gondola = facilitiesObjectMother.createPowerOnDamagedElectronicFacilities();
-        ElectronicFacilities rollerCoaster = facilitiesObjectMother.createPowerOnUndamagedElectronicFacilities();
+        ElectronicFacilities slides = facilitiesObjectMother.createPowerOnDamagedElectronicFacilities();
+        ElectronicFacilities jumpers = facilitiesObjectMother.createPowerOnUndamagedElectronicFacilities();
         ElectronicFacilities bumperCars = facilitiesObjectMother.createPowerOffDamagedElectronicFacilities();
         ElectronicFacilities elevator = facilitiesObjectMother.createPowerOffUndamagedElectronicFacilities();
-
-        assertFalse(bicycleCenter.isDamaged());
-        assertFalse(bicycleCenter.isClosed());
-
-        assertTrue(toilet.isDamaged());
-        assertTrue(toilet.isClosed());
-
-        assertTrue(gondola.isClosed());
-        assertTrue(gondola.isDamaged());
-        assertTrue(gondola.isPowered());
-
-        assertFalse(rollerCoaster.isClosed());
-        assertFalse(rollerCoaster.isDamaged());
-        assertTrue(rollerCoaster.isPowered());
-
-        assertTrue(bumperCars.isClosed());
-        assertTrue(bumperCars.isDamaged());
-        assertFalse(bumperCars.isPowered());
-
-        assertTrue(elevator.isClosed());
-        assertFalse(elevator.isDamaged());
-        assertFalse(elevator.isPowered());
 
         System.out.print("TraditionalFacilities:getInstance:("+bicycleCenter.hashCode()+"): ");
         System.out.print("Bicycle Center: ");
@@ -45,12 +23,12 @@ public class FacilitiesObjectMotherTest extends TestCase {
         System.out.print("TraditionalFacilities:getInstance:("+toilet.hashCode()+"): ");
         System.out.print("Toilet: ");
         toilet.enter();
-        System.out.print("ElectronicFacilities:getInstance:("+gondola.hashCode()+"): ");
-        System.out.print("Gondola: ");
-        gondola.enter();
-        System.out.print("ElectronicFacilities:getInstance:("+rollerCoaster.hashCode()+"): ");
-        System.out.print("Roller Coaster: ");
-        rollerCoaster.enter();
+        System.out.print("ElectronicFacilities:getInstance:("+slides.hashCode()+"): ");
+        System.out.print("Slides: ");
+        slides.enter();
+        System.out.print("ElectronicFacilities:getInstance:("+jumpers.hashCode()+"): ");
+        System.out.print("Jumpers: ");
+        jumpers.enter();
         System.out.print("ElectronicFacilities:getInstance:("+bumperCars.hashCode()+"): ");
         System.out.print("Bumper Cars: ");
         bumperCars.enter();
