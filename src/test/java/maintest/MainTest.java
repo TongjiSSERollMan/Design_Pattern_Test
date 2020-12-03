@@ -25,7 +25,7 @@ import frontcontroller.FrontControllerTest;
 import futurepromise.FuturePromiseTest;
 import immutable.ImmutableTest;
 import interpreter.InterpreterTest;
-import iterator.TouristTest;
+import iterator.IteratorTest;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -85,7 +85,7 @@ public class MainTest extends TestCase {
         suite.addTestSuite(FuturePromiseTest.class);
         suite.addTestSuite(ImmutableTest.class);
         suite.addTestSuite(InterpreterTest.class);
-        suite.addTestSuite(TouristTest.class);
+        suite.addTestSuite(IteratorTest.class);
         suite.addTestSuite(LazyLoadingTest.class);
         suite.addTestSuite(MediatorTest.class);
         suite.addTestSuite(MementoTest.class);
