@@ -18,8 +18,6 @@ public class SpecificationTest extends TestCase {
 
     @Test
     public void test() {
-        System.out.println("Test specification:");
-        System.out.println("Initializing facilities...");
         List<Facility> facilityList = new ArrayList<>();
         facilityList.add(new RollerCaster());
         facilityList.add(new MerryGoRound());
@@ -27,61 +25,31 @@ public class SpecificationTest extends TestCase {
         facilityList.add(new PirateShip());
         facilityList.add(new RoaringRapids());
         facilityList.add(new MadHatterTeaCups());
-        System.out.println("All facilities:");
-        facilityList.forEach(
-            facility ->
-                System.out.println(
-                    facility.getName() +
-                    " " +
-                    facility.getFacilityType() +
-                    " " +
-                    facility.getFacilitySuitableAge() +
-                    " " +
-                    facility.getFacilityThrillLevel()
-                )
-        );
-        System.out.println("Sorting out facilities which is OUTDOOR...");
+        for(Facility facility:facilityList){
+            System.out.println(facility.getName() + facility.getFacilityType() +
+                    facility.getFacilitySuitableAge() + facility.getFacilityThrillLevel());
+        }
         List<Facility> outdoorFacilityList = facilityList
             .stream()
             .filter(new FacilityTypeSelector(FacilityType.OUTDOOR))
             .collect(Collectors.toList());
-        System.out.println("OUTDOOR facilities:");
-        outdoorFacilityList.forEach(
-            facility ->
-                System.out.println(
-                    facility.getName() + " " + facility.getFacilityType()
-                )
-        );
-        System.out.println("Sorting out facilities which is SCARY...");
+        for(Facility facility:outdoorFacilityList){
+            System.out.println(facility.getName() + facility.getFacilityType());
+        }
         List<Facility> scaryFacilityList = facilityList
             .stream()
             .filter(new FacilityThrillLevelSelector(FacilityThrillLevel.SCARY))
             .collect(Collectors.toList());
-        System.out.println("SCARY facilities:");
-        scaryFacilityList.forEach(
-            facility ->
-                System.out.println(
-                    facility.getName() + " " + facility.getFacilityThrillLevel()
-                )
-        );
-        System.out.println(
-            "Sorting out facilities which is OUTDOOR and suitable for KIDS..."
-        );
+        for(Facility facility:scaryFacilityList){
+            System.out.println(facility.getName() + facility.getFacilityThrillLevel());
+        }
         List<Facility> outdoorTweenFacilityList = facilityList
             .stream()
             .filter(new FacilityTypeSelector(FacilityType.OUTDOOR))
             .filter(new FacilitySuitableAgeSelector(FacilitySuitableAge.KIDS))
             .collect(Collectors.toList());
-        System.out.println("OUTDOOR and suitable for KIDS facilities:");
-        outdoorTweenFacilityList.forEach(
-            facility ->
-                System.out.println(
-                    facility.getName() +
-                    " " +
-                    facility.getFacilityType() +
-                    " " +
-                    facility.getFacilitySuitableAge()
-                )
-        );
+        for(Facility facility:outdoorFacilityList){
+            System.out.println(facility.getName() + facility.getFacilityType() + facility.getFacilitySuitableAge());
+        }
     }
 }
