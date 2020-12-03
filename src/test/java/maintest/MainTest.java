@@ -16,7 +16,7 @@ import dataaccessobject.DataAccessObjectTest;
 import decorator.DecoratorTest;
 import delegation.DelegationTest;
 import dependencyInjection.DependencyInjectionTest;
-import dirtyflag.ElectronicUpdateTest;
+import dirtyflag.DirtyFlagTest;
 import dto.DtoTest;
 import factory.FactoryTest;
 import featuretoggle.FeatureToggleTest;
@@ -75,7 +75,7 @@ public class MainTest extends TestCase {
         suite.addTestSuite(DecoratorTest.class);
         suite.addTestSuite(DelegationTest.class);
         suite.addTestSuite(DependencyInjectionTest.class);
-        suite.addTestSuite(ElectronicUpdateTest.class);
+        suite.addTestSuite(DirtyFlagTest.class);
         suite.addTestSuite(DtoTest.class);
         suite.addTestSuite(FacadeTest.class);
         suite.addTestSuite(FactoryTest.class);

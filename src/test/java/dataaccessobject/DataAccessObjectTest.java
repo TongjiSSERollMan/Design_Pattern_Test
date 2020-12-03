@@ -3,7 +3,7 @@ package dataaccessobject;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-public class DataAccessObjectTest {
+public class DataAccessObjectTest extends TestCase {
     @Test
     public void testDataAccessObject(){
         CustomerDao customerDao = new CustomerDaoImpl();

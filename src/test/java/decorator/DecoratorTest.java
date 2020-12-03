@@ -1,8 +1,9 @@
 package decorator;
 
+import junit.framework.TestCase;
 import org.junit.Test;
 
-public class DecoratorTest {
+public class DecoratorTest extends TestCase {
     @Test
     public void testDecorator() {
         VisitPackage visitPackage = new Ticket();
