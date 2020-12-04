@@ -16,27 +16,17 @@ import org.junit.Test;
  */
 public class CallbackTest {
     private Long callingCount = Long.valueOf(0);
-
-    /**
-     * @Description: Test the callback
-     *
-     */
     @Test
     public void test() {
 
         Callback callback = () -> callingCount++;
-
         goToTheBathroom task = new goToTheBathroom();
 
-        System.out.println("Initial calling count of 0");
-        System.out.println("CallbackTest:getInstance:("+this.hashCode()+"): calling count = " + callingCount.toString());
-
-        System.out.println("\nCallback called once");
         task.executeWith(callback);
-        System.out.println("CallbackTest:getInstance:("+this.hashCode()+"): calling count = " + callingCount.toString());
-
-        System.out.println("\nCallback called twice");
+        System.out.println(callingCount.toString());
         task.executeWith(callback);
-        System.out.println("CallbackTest:getInstance:("+this.hashCode()+"): calling count = " + callingCount.toString());
+        System.out.println(callingCount.toString());
+        task.executeWith(callback);
+        System.out.println(callingCount.toString());
     }
 }

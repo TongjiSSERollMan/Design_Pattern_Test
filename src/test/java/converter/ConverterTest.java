@@ -11,17 +11,14 @@ public class ConverterTest extends TestCase {
                 new MembershipConverter();
         MembershipDto membershipDto =
                 new MembershipDto(
-                        "Jiajie",
-                        "Li",
+                        "first Name",
+                        "last Name",
                         true,
-                        "1750655@tongji.edu.cn");
+                        "username@email.com");
 
-        System.out.println("ConverterTest:");
-        System.out.println("\t"+membershipDto.toString());
-        System.out.println("\n\tConvert it into a entity.\n");
+        System.out.println(membershipDto.toString());
         Membership membership =
                 membershipConverter.convertFromDto(membershipDto);
-        System.out.println("\t"+membership.toString());
-        System.out.println("ConverterTest Exit");
+        System.out.println(membership.toString());
     }
 }

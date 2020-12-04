@@ -7,26 +7,18 @@ public class CompositeTest extends TestCase {
 
     @Test
     public void test() {
-        System.out.println("Test composite pattern:");
-        //create employees and their info, all details can be changed
-        Employee CEO = new Employee("Dri","CEO","Run", 110, 20);
-        Employee manager1 = new Employee("Lhc","Manager","Manage", 10, 20);
-        Employee manager2 = new Employee("Zyy","Manager","Manage", 10, 20);
-        Employee staff1 = new Employee("Lsq","Staff","Facility", 1, 20);
-        Employee staff2 = new Employee("Wyj","Staff","Environment", 1, 20);
-        //form a subordinate list, all details can be changed
-        CEO.add(manager1);
-        CEO.add(manager2);
-        manager1.add(staff1);
-        manager2.add(staff2);
-        CEO.remove(manager1);                    //just for different situations test
-        //only three levels, then just use two for loop to print the list
-        System.out.println("CompositeTest: (" + hashCode() + "): " + CEO);
-        for (Employee emp : CEO.getEmployeeList()) {
-            System.out.println("CompositeTest: (" + hashCode() + "): " + emp);
-            for (Employee employee : emp.getEmployeeList()) {
-                System.out.println("CompositeTest: (" + hashCode() + "): " + employee);
-            }
-        }
+        Employee root = new Employee("DSY","root","touch fish", 100, 18);
+        Employee son1 = new Employee("son1","son1","touch fish", 100, 18);
+        Employee son2 = new Employee("son2","son2","touch fish", 100, 18);
+        Employee son3 = new Employee("son3","son3","touch fish", 100, 18);
+        root.add(son1);
+        son1.add(son2);
+        son2.add(son3);
+
+        son1.remove(son2);
+
+        System.out.println(root.getEmployeeList());
+        System.out.println(son1.getEmployeeList());
+        System.out.println(son2.getEmployeeList());
     }
 }

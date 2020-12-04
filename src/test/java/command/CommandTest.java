@@ -7,15 +7,18 @@ public class CommandTest extends TestCase {
 
     @Test
     public void test() {
-        System.out.println("Test command pattern:");
-        //give command, can change content and order of command
+
         Command command = new Command();
-        PutUp up = new PutUp(command);
-        PutDown down = new PutDown(command);
-        //execute command
         Operator operator = new Operator();
+
+        PutUp up = new PutUp(command);
+        PutUp up2 = new PutUp(command);
+        PutDown down = new PutDown(command);
+
+        operator.takeCommand(down);
+        operator.takeCommand(up2);
         operator.takeCommand(up);
         operator.takeCommand(down);
-        operator.takeCommand(up);
+        operator.takeCommand(down);
     }
 }
