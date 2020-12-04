@@ -7,8 +7,6 @@ public class ProxyTest extends TestCase {
     @Test
     public void test(){
 
-        System.out.println("ProxyTest:");
-
         System.out.println("Creating the object to be proxied...");
         GeneralManager generalManager = new GeneralManager();
         System.out.println();
