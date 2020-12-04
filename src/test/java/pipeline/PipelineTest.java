@@ -2,9 +2,7 @@ package pipeline;
 
 import junit.framework.TestCase;
 import org.junit.Test;
-/**
- * @author 1851594王思桐
- */
+
 public class PipelineTest extends TestCase {
     @Test
     public void test() {
