@@ -4,21 +4,20 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 public class ValueObjectTest extends TestCase {
-
-    /**
-     * Create three HeroStats and check equality between those
-     */
     @Test
     public void test(){
-        HeroStat statA = HeroStat.valueOf(10,5, 0);
-        HeroStat statB = HeroStat.valueOf(10, 5 ,0);
-        HeroStat statC = HeroStat.valueOf(5, 1, 8);
-
-        System.out.println("(" + this.toString() + ") : " + "StatA: intelligence:" + Integer.toString(statA.getIntelligence()) + " strength:" + Integer.toString(statA.getStrength()) + " luck:" + Integer.toString(statA.getLuck()));
-        System.out.println("(" + this.toString() + ") : " + "StatB: intelligence:" + Integer.toString(statB.getIntelligence()) + " strength:" + Integer.toString(statB.getStrength()) + " luck:" + Integer.toString(statB.getLuck()));
-        System.out.println("(" + this.toString() + ") : " + "StatC: intelligence:" + Integer.toString(statA.getIntelligence()) + " strength:" + Integer.toString(statA.getStrength()) + " luck:" + Integer.toString(statC.getLuck()));
-        System.out.println("(" + this.toString() + ") : " + "Is statA and statB equal : " + Boolean.toString(statA.equals(statB)));
-        System.out.println("(" + this.toString() + ") : " + "Is statA and statC equal : " + Boolean.toString(statA.equals(statC)));
-
+        System.out.println("Value Object Test BEGIN: ");
+        HeroStat heroStatA1 = HeroStat.valueOf(9,8, 5);
+        HeroStat heroStatA2 = HeroStat.valueOf(9, 8 ,5);
+        HeroStat heroStatB = HeroStat.valueOf(2, 1, 1);
+        System.out.println("[heroStatA1: strength=" + heroStatA1.getStrength() + ", intelligence=" +
+                heroStatA1.getIntelligence() + ",luck=" + heroStatA1.getLuck() + "]");
+        System.out.println("[heroStatA2: strength=" + heroStatA2.getStrength() + ", intelligence=" +
+                heroStatA2.getIntelligence() + ",luck=" + heroStatA2.getLuck() + "]");
+        System.out.println("[heroStatB: strength=" + heroStatB.getStrength() + ", intelligence=" +
+                heroStatB.getIntelligence() + ",luck=" + heroStatB.getLuck() + "]");
+        System.out.println("statA1 & statA2 Equality Test: " + heroStatA1.equals(heroStatA2));
+        System.out.println("statA1 & statB Equality Test: " + heroStatA1.equals(heroStatB));
+        System.out.println("Value Object Test END.");
     }
 }
