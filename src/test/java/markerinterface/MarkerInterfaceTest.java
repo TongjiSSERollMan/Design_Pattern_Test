@@ -4,27 +4,43 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 public class MarkerInterfaceTest extends TestCase {
+
+    private boolean enterable (Object object) {
+        return (object instanceof Permission);
+    }
+
+    /**
+     * 测试的保安类的实现
+     */
     @Test
-    public void test(){
+    public void testGuard() {
+        System.out.println("testGuard");
         Guard guard = new Guard();
-        Thief thief = new Thief();
 
-        System.out.println("("+this.toString()+") : "+"Class guard implements interface Permission so they have permission to enter");
-
-        if(guard instanceof Permission){
+        assertTrue(enterable(guard));
+        if (enterable(guard)) {
             guard.enter();
-        }else{
-            System.out.println("(" + this.toString() + ") : " + "You have no permission to enter, " +
-                    "please leave this area");
-        }
-
-        System.out.println("("+this.toString()+") : "+"Class thief doesn't implement interface Permission so they don't have permission to enter");
-        if(thief instanceof Permission){
-            thief.steal();
-        }else{
-            thief.doNothing();
+        } else {
+            System.out.println("(" + this.toString() + ") : " + "have no permission");
+            fail();
         }
     }
 
+    /**
+     * 测试盗贼类的实现
+     */
+    @Test
+    public void testThief() {
+        System.out.println("testThief");
 
+        Thief thief = new Thief();
+
+        assertFalse(enterable(thief));
+        if (enterable(thief)) {
+            thief.steal();
+            fail();
+        } else {
+            thief.doNothing();
+        }
+    }
 }

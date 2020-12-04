@@ -3,35 +3,56 @@ package mediator;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-public class MediatorTest extends TestCase {
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.regex.Pattern;
 
+public class MediatorTest extends TestCase {
+    private final PrintStream originalSystemOut = System.out;
+    private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+    /**
+     * 测试单实例
+     */
     @Test
-    public void test() {
-        GroupMember son = new Son("Jack");
-        GroupMember son2 = new Son("Sam");
-        GroupMember mother = new Mother("Alice");
-        GroupMember father = new Father("Peter");
+    public void testOne() {
+        System.setOut(new PrintStream(outputStream));
+
+        TourGroup tourGroup = new TourGroupImpl();
+        GroupMember son = new Son("SON");
+        tourGroup.addMember(son);
+        Pattern addMemberPattern = Pattern.compile("GroupMemberBase:getInstance:\\(.*\\): Son\\(SON\\) joins the tour group");
+        assertTrue(addMemberPattern.matcher(outputStream.toString().trim()).matches());
+        outputStream.reset();
+
+        son.act(Action.TOILET);
+        Pattern actPattern = Pattern.compile("GroupMemberBase:getInstance:\\(.*\\): Son\\(SON\\) wants to go to the toilet\\.");
+        assertTrue(actPattern.matcher(outputStream.toString().trim()).matches());
+        System.setOut(originalSystemOut);
+    }
+
+    /**
+     * 测试多实例
+     */
+    public void testAll() {
+        System.out.println("testAll");
+        GroupMember father = new Father("FATHER");
+        GroupMember mother = new Mother("MOTHER");
+        GroupMember son = new Son("SON");
+        GroupMember otherSon = new Son("SON");
+        GroupMember tourGuide = new TourGuides("GUIDE");
+
         TourGroup tourGroup = new TourGroupImpl();
 
-        System.out.println("1# Members join the group");
-        tourGroup.addMember(son);
-        tourGroup.addMember(son2);
-        tourGroup.addMember(mother);
         tourGroup.addMember(father);
-
-        System.out.println("\n2# Members want to go to toilet");
-        son.act(Action.TOILET);
-
-        System.out.println("\n3# Tour Guide joins the group");
-        GroupMember tourGuide = new TourGuides("John");
+        tourGroup.addMember(mother);
+        tourGroup.addMember(son);
+        tourGroup.addMember(otherSon);
         tourGroup.addMember(tourGuide);
-        tourGuide.act(Action.WANDER);
 
-        System.out.println("\n4# Tour Guide starts to lead a tour");
         tourGuide.act(Action.TOUR);
-
-        System.out.println("\n5# Go for a dog sled");
-        mother.act(Action.SLED);
+        mother.act(Action.WANDER);
     }
+
 
 }
