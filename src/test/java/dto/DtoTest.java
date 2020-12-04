@@ -8,16 +8,16 @@ public class DtoTest extends TestCase {
     /**
      * Get new tools.
      */
-    public void test(){
-        Tools skiBoard = new Tools();
-        skiBoard.name = "skiboard";
-        skiBoard.price = "100";
-        Tools skiBoots = new Tools();
-        skiBoots.name = "skiBoots";
-        skiBoots.price = "200";
+    public void test() {
+        Tools sled = new Tools();
+        sled.name = "Sled"; //雪橇
+        sled.price = "1000";
+        Tools skates = new Tools();
+        skates.name = "Skates"; //溜冰鞋
+        skates.price = "2000";
         Preprocessing preprocessingLine = new Preprocessing();
         Skier Skier = new Skier();
         preprocessingLine.establishPipe(Skier);
-        preprocessingLine.preprocess("skierA", skiBoard, skiBoots);
+        preprocessingLine.preprocess("skierA", sled, skates);
     }
 }

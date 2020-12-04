@@ -10,21 +10,21 @@ public class FactoryTest extends TestCase {
         System.out.println("Test factory pattern:");
         BuildFacility buildFacility = new BuildFacility();
         //build new facility, can be changed
-        Facility iceRink = buildFacility.build("ice rink");
-        if(iceRink != null) {
-            iceRink.build();
+        Facility skiFacility = buildFacility.build("ski facility");
+        if(skiFacility != null) {
+            skiFacility.build();
         }
         Facility skiField = buildFacility.build("ski field");
         if(skiField != null) {
             skiField.build();
         }
-        Facility cableCar = buildFacility.build("cable car");
-        if(cableCar != null) {
-            cableCar.build();
+        Facility tourCar = buildFacility.build("tour car");
+        if(tourCar != null) {
+            tourCar.build();
         }
-        Facility juan = buildFacility.build("juan");
-        if(juan != null) {
-            juan.build();
+        Facility iceSculpturePark = buildFacility.build("Ice sculpture park");
+        if(iceSculpturePark != null) {
+            iceSculpturePark.build();
         }
     }
 }

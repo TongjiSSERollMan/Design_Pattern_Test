@@ -8,9 +8,9 @@ public class FrontControllerTest extends TestCase {
     public void test(){
         System.out.println("(" + this.toString() + ") : " + "FrontController:");
         FrontController frontController = new FrontController();
-        frontController.dispatchRequest("HOME", "Jack");
+        frontController.dispatchRequest("HOME", "JJF");
         frontController.dispatchRequest("HOME", "admin");
-        frontController.dispatchRequest("PLAYER", "Jack");
+        frontController.dispatchRequest("PLAYER", "JJF");
         frontController.dispatchRequest("PLAYER", "Admin");
     }
 }
