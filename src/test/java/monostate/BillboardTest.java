@@ -1,36 +1,70 @@
 package monostate;
 
+import balking.Bill;
 import junit.framework.TestCase;
 import org.junit.Test;
 
 public class BillboardTest extends TestCase {
+
+    /**
+     * 测试默认构造函数的合理性
+     */
     @Test
-    public void test(){
-        System.out.println("1# Initial News");
-        Billboard billboardOutsideTheParadise = new Billboard();
-        System.out.print("billboardOutsideTheParadise:getInstance:("+billboardOutsideTheParadise.hashCode()+"): ");
-        System.out.println("Initial News on billboardOutsideTheParadise:");
-        System.out.println(billboardOutsideTheParadise.getTodayNews());
-        Billboard billboardAtTheTicketCounter = new Billboard();
-        System.out.print("billboardOutsideTheParadise:getInstance:("+billboardAtTheTicketCounter.hashCode()+"): ");
-        System.out.println("Initial News on billboardAtTheTicketCounter:");
-        System.out.println(billboardAtTheTicketCounter.getTodayNews());
-        Billboard billboardInTheRestaurant = new Billboard();
-        System.out.print("billboardOutsideTheParadise:getInstance:("+billboardInTheRestaurant.hashCode()+"): ");
-        System.out.println("Initial News on billboardInTheRestaurant:");
-        System.out.println(billboardInTheRestaurant.getTodayNews());
+    public void testGet(){
+        System.out.println("testGet");
 
-        System.out.println("\n2# Updated News");
-        billboardAtTheTicketCounter.setTodayNews("Half price at all recreation facilities today!");
-
-        System.out.print("billboardOutsideTheParadise:getInstance:("+billboardOutsideTheParadise.hashCode()+"): ");
-        System.out.println("Updated News on billboardOutsideTheParadise:");
-        System.out.println(billboardOutsideTheParadise.getTodayNews());
-        System.out.print("billboardOutsideTheParadise:getInstance:("+billboardAtTheTicketCounter.hashCode()+"): ");
-        System.out.println("Updated News on billboardAtTheTicketCounter:");
-        System.out.println(billboardAtTheTicketCounter.getTodayNews());
-        System.out.print("billboardOutsideTheParadise:getInstance:("+billboardInTheRestaurant.hashCode()+"): ");
-        System.out.println("Updated News on billboardInTheRestaurant:");
-        System.out.println(billboardInTheRestaurant.getTodayNews());
+        Billboard billboard = new Billboard();
+        assertEquals("Welcome to IceParadise!", billboard.getTodayNews());
+        System.out.println(billboard.getTodayNews());
     }
+
+    /**
+     * 测试setter的合理性，是否符合该设计模式意图
+     */
+    @Test
+    public void testSet() {
+        System.out.println("testGet");
+
+        Billboard billboard = new Billboard();
+        Billboard otherBillboard = new Billboard();
+        billboard.setTodayNews("TESTCASE");
+        assertEquals("TESTCASE", billboard.getTodayNews());
+        assertEquals("TESTCASE", otherBillboard.getTodayNews());
+        System.out.println(billboard.getTodayNews());
+        System.out.println(otherBillboard.getTodayNews());
+    }
+
+    /**
+     * 测试Cloneable的接口是否符合约定
+     */
+    @Test
+    public void testClone() {
+        System.out.println("testClone");
+
+        Billboard billboard = new Billboard();
+        try {
+            Billboard otherBillboard = (Billboard) billboard.clone();
+            assertEquals("Welcome to IceParadise!", otherBillboard.getTodayNews());
+            System.out.println(billboard.getTodayNews());
+        } catch (CloneNotSupportedException cloneNotSupportedException) {
+            System.out.println("clone不支持");
+        } catch (Exception exception) {
+            System.out.println("clone实现有误");
+        }
+    }
+
+    /**
+     * 测试派生类
+     */
+    @Test
+    public void testInherit() {
+        InheritedBillboard inheritedBillboard = new InheritedBillboard();
+        inheritedBillboard.setTodayNews("TESTCASE");
+        assertEquals("TESTCASE", inheritedBillboard.getTodayNews());
+        System.out.println(inheritedBillboard.getTodayNews());
+    }
+}
+
+class InheritedBillboard extends Billboard{
+
 }

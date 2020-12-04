@@ -1,37 +1,54 @@
 package strategy;
 
 import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 public class ExperiencedTouristTest extends TestCase {
-    @Test
-    public void test() {
-        System.out.println("1# Initial Destination");
-        ExperiencedTourist Sam = new ExperiencedTourist(new goToChillingRestaurant());
-        System.out.print("ExperiencedTourist:getInstance:("+Sam.hashCode()+"): ");
-        System.out.print("Sam: ");
-        Sam.goToDestination();
-        ExperiencedTourist Jack = new ExperiencedTourist(new goToIceCanyon());
-        System.out.print("ExperiencedTourist:getInstance:("+Jack.hashCode()+"): ");
-        System.out.print("Jack: ");
-        Jack.goToDestination();
-        ExperiencedTourist Peter = new ExperiencedTourist(new goToMidHillsideChalet());
-        System.out.print("ExperiencedTourist:getInstance:("+Peter.hashCode()+"): ");
-        System.out.print("Peter: ");
-        Peter.goToDestination();
+    private final PrintStream originalSystemOut = System.out;
+    private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-        System.out.println("\n2# Updated Destination");
-        Sam.changeMethod(new goToParadiseExit());
-        Jack.changeMethod(new goToParadiseExit());
-        Peter.changeMethod(new goToParadiseExit());
-        System.out.print("ExperiencedTourist:getInstance:("+Sam.hashCode()+"): ");
-        System.out.print("Sam: ");
-        Sam.goToDestination();
-        System.out.print("ExperiencedTourist:getInstance:("+Jack.hashCode()+"): ");
-        System.out.print("Jack: ");
-        Jack.goToDestination();
-        System.out.print("ExperiencedTourist:getInstance:("+Peter.hashCode()+"): ");
-        System.out.print("Peter: ");
-        Peter.goToDestination();
+    /**
+     * 测试初始化
+     */
+    @Test
+    public void testGet() {
+        System.setOut(new PrintStream(outputStream));
+        ExperiencedTourist tourist = new ExperiencedTourist(new goToChillingRestaurant());
+        tourist.goToDestination();
+        assertEquals("The Chilling Restaurant was reached by walking.", outputStream.toString().trim());
+        System.setOut(originalSystemOut);
     }
+
+    /**
+     * 测试切换策略
+     */
+    @Test
+    public void testChange() {
+        System.setOut(new PrintStream(outputStream));
+        ExperiencedTourist tourist = new ExperiencedTourist(new goToIceCanyon());
+        tourist.goToDestination();
+        assertEquals("Use the Gondola to reach the Ice Canyon", outputStream.toString().trim());
+        outputStream.reset();
+
+        System.setOut(new PrintStream(outputStream));
+        tourist.changeMethod(new goToMidHillsideChalet());
+        tourist.goToDestination();
+        assertEquals("Reaching Mid-Hillside Chalet with a dog sled.", outputStream.toString().trim());
+        outputStream.reset();
+    }
+
+    @Test
+    public void testAll() {
+        System.out.println("testAll");
+
+        ExperiencedTourist tourist = new ExperiencedTourist(new goToIceCanyon());
+        tourist.goToDestination();
+        tourist.changeMethod(new goToMidHillsideChalet());
+        tourist.goToDestination();
+        tourist.changeMethod(new goToParadiseExit());
+        tourist.goToDestination();
+     }
 }
