@@ -9,27 +9,14 @@ public class AbstractFactoryTest extends TestCase {
     public void test(){
         System.out.println("Test abstract factory:");
         FacilityFactory factory;
-        System.out.println("Use PolarBear Style Facility:");
         factory=new PolarBearFacilityFactory();
-        useFacility(factory);
-        System.out.println("Use Penguin Style Facility:");
-        factory=new PenguinFacilityFactory();
-        useFacility(factory);
-        System.out.println("Use Seal Style Facility:");
-        factory=new SealFacilityFactory();
-        useFacility(factory);
-    }
-
-    public void useFacility(FacilityFactory factory)
-    {
-        BumperCar bumperCar;
-        RollerCoaster rollerCoaster;
-        Restaurant restaurant;
-        bumperCar=factory.createBumperCar();
-        rollerCoaster=factory.createRollerCoaster();
-        restaurant=factory.createRestaurant();
+        BumperCar bumperCar = factory.createBumperCar();
         bumperCar.play();
-        rollerCoaster.play();
+        factory=new PenguinFacilityFactory();
+        Restaurant restaurant = factory.createRestaurant();
         restaurant.eat();
+        factory=new SealFacilityFactory();
+        RollerCoaster rollerCoaster = factory.createRollerCoaster();
+        rollerCoaster.play();
     }
 }

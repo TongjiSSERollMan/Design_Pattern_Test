@@ -8,15 +8,15 @@ public class ActiveObjectTest extends TestCase {
     public  void test() {
         System.out.println("Test active object:");
         try {
-            NotifyThread notifyThread=new NotifyThread("Notification",200);
+            NotifyThread notifyThread=new NotifyThread("Notification",30);
             SolveEventThread solveEventThread =
-                    new SolveEventThread("Customer", ActiveObjectFactory.createActiveObject(),notifyThread, 200);
+                    new SolveEventThread("Customer", ActiveObjectFactory.createActiveObject(),notifyThread, 30);
             solveEventThread.start();
             solveEventThread.join();
             notifyThread.join();
         }
         catch (Exception e){
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
     }
 }
