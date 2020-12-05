@@ -11,9 +11,7 @@ import specification.facility.*;
 import specification.selector.*;
 
 
-/**
- * @author nemo
- */
+
 public class SpecificationTest extends TestCase {
 
     @Test
