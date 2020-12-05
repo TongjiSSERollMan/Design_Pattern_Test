@@ -7,7 +7,6 @@ import org.junit.Test;
 public class BalkingTest extends TestCase {
     @Test
     public void test() throws InterruptedException {
-        System.out.println("Test balking:");
         Bill bill =new Bill();
         CustomerThread customerThread=new CustomerThread("customerXiaoMing", bill);
         WaiterThread waiterThread=new WaiterThread("waiterXiaoHong", bill);

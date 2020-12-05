@@ -9,7 +9,6 @@ import java.util.List;
 public class BridgeTest extends TestCase {
     @Test
     public void test() {
-        System.out.println("Test bridge:");
         BigStage bigStage = new BigStage(new DancePerformance());
         SmallStage smallStage = new SmallStage(new SingPerformance());
         bigStage.doPerform();
