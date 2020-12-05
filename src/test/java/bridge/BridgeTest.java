@@ -6,14 +6,10 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Test for bridge
- * @author Nntraveler
- */
 public class BridgeTest extends TestCase {
     @Test
     public void test() {
-        // Instantiates Stages and Performances
+        System.out.println("Test bridge:");
         BigStage bigStage = new BigStage(new DancePerformance());
         SmallStage smallStage = new SmallStage(new SingPerformance());
         bigStage.doPerform();
