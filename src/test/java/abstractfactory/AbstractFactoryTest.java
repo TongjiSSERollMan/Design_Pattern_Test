@@ -7,7 +7,6 @@ public class AbstractFactoryTest extends TestCase {
 
     @Test
     public void test(){
-        System.out.println("Test abstract factory:");
         FacilityFactory factory;
         factory=new PolarBearFacilityFactory();
         BumperCar bumperCar = factory.createBumperCar();
