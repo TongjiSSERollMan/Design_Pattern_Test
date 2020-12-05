@@ -6,9 +6,6 @@ import org.junit.Test;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @author 1851594王思桐
- */
 public class MementoTest extends TestCase {
     private final Pattern linePattern = Pattern.compile("([012]\\s)");
     /**
